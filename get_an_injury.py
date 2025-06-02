@@ -2,6 +2,7 @@ import csv, requests, sys
 
 from numpy import random
 from pathlib import Path
+import pyttsx3
 
 def load_csv():
     with open('injuries.csv', newline='') as csvfile:
@@ -71,5 +72,8 @@ while True:
         print(f"Description:\n\n{full_description}\n")
         print(f"Date: {injury["treatment_date"]}")
         print("********************\n")
+        engine = pyttsx3.init()
+        engine.say(full_description)
+        engine.runAndWait()
     else:
         sys.exit()
